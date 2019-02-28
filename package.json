@@ -1,0 +1,27 @@
+{
+  "name": "morecss-js",
+  "version": "1.0.0",
+  "description": "A realtime MORE transpiler written in JS",
+  "main": "src/moreCSS.js",
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adybo123/MoreCSS-JS.git"
+  },
+  "keywords": [
+    "april",
+    "fools",
+    "joke"
+  ],
+  "author": "Adam Soutar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Adybo123/MoreCSS-JS/issues"
+  },
+  "homepage": "https://github.com/Adybo123/MoreCSS-JS#readme",
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}
