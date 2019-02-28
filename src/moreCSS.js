@@ -181,6 +181,11 @@ class MoreCSSTranspiler {
       throwError(lineNumber, line, 'Style linting', 'American spelling')
     }
 
+    if (line.includes('!important')) {
+      throwError(lineNumber, line, 'Style linting', "Line cannot be !important. It is either !unimportant, or it isn't.")
+      line = line.replace('!important', '')
+    }
+
     let isImportant = !(line.includes('!unimportant'))
     line = line.replace('!unimportant', '').replace(';', '')
 

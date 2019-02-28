@@ -12,10 +12,10 @@ transpile it in JavaScript, in the browser, on the page that needs the styles.
 MoreCSS JS isn't finished yet, so you can't use it like is implied in the original
 documentation, but you can use the bits of it that work at the moment like this:
 ```javascript
-let transpiler = new MoreCSSTranspiler(`
+const transpiler = new MoreCSSTranspiler(`
   /* More styles here */
 `)
-let plainCSS = transpiler.transpile()
+const plainCSS = transpiler.transpile()
 ```
 
 ## Supported spec features
@@ -89,3 +89,7 @@ text-align:center !important;
 Unsupported features of MoreCSS:
  - Browser prefixing enforcement
  - Semantic fractions
+
+#### MoreCSS: Write more, do less
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard) 
