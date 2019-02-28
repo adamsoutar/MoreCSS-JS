@@ -9,6 +9,8 @@ const numberModifiers = {
   'hundred': 100
 }
 const numbers = {
+  'half': 0.5,
+  'zero': 0,
   'one': 1,
   'two': 2,
   'three': 3,
@@ -72,6 +74,29 @@ function isSemanticNumber (numString) {
   return false
 }
 
+function subSplit (arr, val) {
+  let out = []
+  for (let a of arr) {
+    let b = a.split(val)
+    for (let bB of b) {
+      out.push(bB)
+    }
+  }
+  return out
+}
+
+function replaceSemanticNumbersInString (inStr) {
+  let outStr = inStr
+  const vals = subSplit(subSplit(subSplit(inStr.split(' '), ','), '('), ')')
+  console.log(vals)
+  for (let v of vals) {
+    if (isSemanticNumber(v)) {
+      outStr = outStr.replace(v, interpretSemanticNumber(v))
+    }
+  }
+  return outStr
+}
+
 class MoreCSSTranspiler {
   constructor (moreString) {
     this.styles = {}
@@ -108,7 +133,16 @@ class MoreCSSTranspiler {
 
     // Find the split between the property and the selector
     let selSplit = line.split(':')[0].split(' ')
-    let value = this.transpileValue(line.split(':')[1])
+
+    let value = line.split(':')[1]
+    if (
+      value.includes('rgb') ||
+      value.includes('#')
+    ) {
+      throwError(lineNumber, line, 'Style linting', 'Non CMYK or PANTONE® colour value.')
+    }
+    value = this.transpileValue(value)
+
     let property = (selSplit[selSplit.length - 1]).replace(/colour/g, 'color')
     let selector = selSplit.filter((x, i) => i !== selSplit.length - 1).join(' ')
 
@@ -122,16 +156,9 @@ class MoreCSSTranspiler {
 
   transpileValue (value) {
     value = value.trim()
-    let values = value.split(' ')
-    let newValues = []
-    for (let v of values) {
-      let newV = v.replace(/pixels/g, 'px').replace(/percent/g, '%').replace(/centre/g, 'center')
-      if (isSemanticNumber(v)) {
-        newV = interpretSemanticNumber(v)
-      }
-      newValues.push(newV)
-    }
-    return newValues.join(' ')
+    value = replaceSemanticNumbersInString(value)
+      .replace(/pixels/g, 'px').replace(/percent/g, '%').replace(/centre/g, 'center')
+    return value
   }
 }
 

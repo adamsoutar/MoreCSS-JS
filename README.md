@@ -25,3 +25,4 @@ Unsupported features of MoreCSS:
  - CMYK colours
  - PANTONE® colours
  - Browser prefixing enforcement
+ - Most fractions
