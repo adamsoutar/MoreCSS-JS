@@ -18,6 +18,72 @@ let transpiler = new MoreCSSTranspiler(`
 let plainCSS = transpiler.transpile()
 ```
 
+## Supported spec features
+
+#### !unimportant
+
+```
+div colour: red;
+div colour: green !unimportant;
+```
+to:
+```css
+div {
+color:red !important;
+color:green ;
+}
+```
+
+#### Semantic numbers
+
+```
+h3 top: one-hundred-and-fourty-three pixels;
+```
+to:
+```css
+h3 {
+top:143px !important;
+}
+```
+
+#### PANTONE® Colour swatches
+
+```
+#about div.inner h3 background-colour: spot(PANTONE one-hundred-and-sixty-seven C) !unimportant;
+```
+to:
+```css
+#about div.inner h3 {
+background-color:rgb(190, 83, 28) ;
+}
+```
+
+#### CMYK Colours
+
+```
+#about div.inner h3 colour: cmyk(zero, fifteen, fifty-three, fifty-three) !unimportant;
+```
+to:
+```css
+div.credit {
+background-color:rgb(30, 17, 0) ;
+}
+```
+
+#### Brittish spelling enforcement
+
+```
+div colour: black;
+div text-align: centre;
+```
+to:
+```
+div {
+color:black !important;
+text-align:center !important;
+}
+```
+
 ## Todo
 
 Unsupported features of MoreCSS:
