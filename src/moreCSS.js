@@ -97,6 +97,7 @@ function replaceSemanticNumbersInString (inStr) {
 
   for (let v of vals) {
     if (isSemanticNumber(v)) {
+      outStr = outStr.replace(`${v} `, interpretSemanticNumber(v))
       outStr = outStr.replace(v, interpretSemanticNumber(v))
     }
   }
@@ -131,6 +132,9 @@ function removeComments (cStr) {
 }
 
 function pantoneToCSS (pantoneString, line, lineNumber) {
+  if (!pantoneString.includes(' C')) {
+    pantoneString = pantoneString.replace('C', ' C')
+  }
   let pantoneId = pantones.indexOf(pantoneString)
   if (pantoneId === -1) {
     throwError(lineNumber, line, 'Argument error', 'Invalid PANTONE® swatch name')
