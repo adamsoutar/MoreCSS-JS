@@ -22,7 +22,6 @@ let plainCSS = transpiler.transpile()
 
 Unsupported features of MoreCSS:
  - Comments (or any line that isn't valid MORE syntax)
- - Semantic values such as numbers
  - CMYK colours
  - PANTONE® colours
  - Browser prefixing enforcement
