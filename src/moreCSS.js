@@ -121,6 +121,15 @@ function cmykToCSS (cmykString) {
   return `rgb(${r}, ${g}, ${b})`
 }
 
+function removeComments (cStr) {
+  let cMatches = cStr.match(/(?:\/\*)(.*?)(?:\*\/)/ig)
+  if (!cMatches) return cStr
+  for (let c of cMatches) {
+    cStr = cStr.replace(c, '')
+  }
+  return cStr
+}
+
 function pantoneToCSS (pantoneString, line, lineNumber) {
   let pantoneId = pantones.indexOf(pantoneString)
   if (pantoneId === -1) {
@@ -152,7 +161,14 @@ class MoreCSSTranspiler {
   }
 
   transpileLine (lineNumber) {
-    let line = this.moreLines[lineNumber]
+    let line = removeComments(this.moreLines[lineNumber])
+
+    if (
+      !(line.includes(':') && line.includes(';'))
+    ) {
+      // Don't think this is a MORE line
+      return
+    }
 
     if (
       line.includes('center') ||

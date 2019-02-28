@@ -21,6 +21,5 @@ let plainCSS = transpiler.transpile()
 ## Todo
 
 Unsupported features of MoreCSS:
- - Comments (or any line that isn't valid MORE syntax)
  - Browser prefixing enforcement
- - Most fractions
+ - Semantic fractions
