@@ -157,7 +157,7 @@ class MoreCSSTranspiler {
     for (let s in this.styles) {
       cssOut = `${cssOut}\n${s} {\n`
       for (let sS of this.styles[s]) {
-        cssOut = `${cssOut}${sS}\n`
+        cssOut = `${cssOut}    ${sS}\n`
       }
       cssOut = `${cssOut}}`
     }
@@ -209,7 +209,7 @@ class MoreCSSTranspiler {
     }
 
     this.styles[selector]
-      .push(`${property}:${value} ${isImportant ? '!important' : ''};`)
+      .push(`${property}: ${value}${isImportant ? ' !important' : ''};`)
   }
 
   transpileValue (value, line, lineNumber) {

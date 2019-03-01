@@ -29,8 +29,8 @@ div colour: green !unimportant;
 to:
 ```css
 div {
-color:red !important;
-color:green ;
+    color: red !important;
+    color: green;
 }
 ```
 
@@ -42,7 +42,7 @@ h3 top: one-hundred-and-fourty-three pixels;
 to:
 ```css
 h3 {
-top:143px !important;
+    top: 143px !important;
 }
 ```
 
@@ -54,7 +54,7 @@ top:143px !important;
 to:
 ```css
 #about div.inner h3 {
-background-color:rgb(190, 83, 28) ;
+    background-color: rgb(190, 83, 28);
 }
 ```
 
@@ -66,7 +66,7 @@ background-color:rgb(190, 83, 28) ;
 to:
 ```css
 div.credit {
-background-color:rgb(30, 17, 0) ;
+    background-color: rgb(30, 17, 0);
 }
 ```
 
@@ -77,10 +77,10 @@ div colour: black;
 div text-align: centre;
 ```
 to:
-```
+```css
 div {
-color:black !important;
-text-align:center !important;
+    color: black !important;
+    text-align: center !important;
 }
 ```
 
@@ -92,4 +92,4 @@ Unsupported features of MoreCSS:
 
 #### MoreCSS: Write more, do less
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard) 
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
